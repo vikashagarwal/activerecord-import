@@ -38,9 +38,9 @@ module ActiveRecord::Import #:nodoc:
         model.errors.clear
 
         validate_callbacks = model._validate_callbacks.dup
-        model._validate_callbacks.each do |callback|
-          validate_callbacks.delete(callback) if callback.raw_filter.is_a? ActiveRecord::Validations::UniquenessValidator
-        end
+        # model._validate_callbacks.each do |callback|
+        #   validate_callbacks.delete(callback) if callback.raw_filter.is_a? ActiveRecord::Validations::UniquenessValidator
+        # end
 
         model.run_callbacks(:validation) do
           if defined?(ActiveSupport::Callbacks::Filters::Environment) # ActiveRecord >= 4.1
